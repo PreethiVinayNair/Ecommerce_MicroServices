@@ -13,7 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Polly;
 
-namespace ECOmmerce.Api.Search
+namespace ECommerce.Api.Search
 {
   public class Startup
   {

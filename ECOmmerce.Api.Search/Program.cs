@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace ECOmmerce.Api.Search
+namespace ECommerce.Api.Search
 {
   public class Program
   {
