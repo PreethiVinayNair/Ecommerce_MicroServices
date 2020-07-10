@@ -1,29 +1,36 @@
 version: '3.4'
 
 services:
-  ecommerce.api.customers:
-    image: ${DOCKER_REGISTRY-}ecommerceapicustomers
-    build:
-      context: .
-      dockerfile: ECommerce.Api.Customers\Dockerfile
+  customers:
+    image:preetn/ecommerceapicustomers:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80/http"
 
-  ecommerce.api.orders:
-    image: ${DOCKER_REGISTRY-}ecommerceapiorders
-    build:
-      context: .
-      dockerfile: ECommerce.Api.Orders\Dockerfile
-
-
-  ecommerce.api.products:
-    image: ${DOCKER_REGISTRY-}ecommerceapiproducts
-    build:
-      context: .
-      dockerfile: ECommerce.Api.Products\Dockerfile
+ orders:
+     image:preetn/ecommerceapiorders:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80/http"
 
 
-  ecommerce.api.search:
-    image: ${DOCKER_REGISTRY-}ecommerceapisearch
-    build:
-      context: .
-      dockerfile: ECommerce.Api.Search\Dockerfile
+  products:
+    image:preetn/ecommerceapiproducts:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80/http"
+
+
+  search:
+    image:preetn/ecommerceapisearch:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Serivces__Products=http://10.0.0.4:19081/lil/products/
+      - Serivces__Customers=http://10.0.0.4:19081/lil/customers/
+      - Serivces__Orders=http://10.0.0.4:19081/lil/orders/
+    ports:
+      - "6004:80"
 
